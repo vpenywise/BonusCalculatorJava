@@ -30,8 +30,14 @@ public class Bonuses {
         int bonusPercent = 0;
         int workDays = 0;
         int monthWorkDays = 21;
-        double a1 = 0; double a2 = 0; double a3 = 0; double a4 = 0;
-        double b1 = 0; double b2 = 0; double b3 = 0; double b4 = 0;
+        double a1 = 0;
+        double a2 = 0;
+        double a3 = 0;
+        double a4 = 0;
+        double b1 = 0;
+        double b2 = 0;
+        double b3 = 0;
+        double b4 = 0;
 
         try {
             for (String s : employees) {
