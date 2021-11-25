@@ -23,8 +23,8 @@ public class Bonuses {
 
         Scanner scan = new Scanner(System.in);
 
-        String[] employees = {"АА", "ВБИ", "ВВ", "ЕП"};
-        System.out.println("Моля, въвеждайте само цели цифри за заплата! \n");
+        String[] employees = {"AA", "VBI", "VV", "EP"};
+        System.out.println("Please, enter the salary: \n");
 
         int totalSalary = 0;
         int bonusPercent = 0;
@@ -41,13 +41,13 @@ public class Bonuses {
 
         try {
             for (String s : employees) {
-                System.out.println("Въведете заплата за служител " + employees[0]);
+                System.out.println("Enter the salary for the employee " + employees[0]);
                 int e1 = scan.nextInt();
-                System.out.println("Въведете заплата за служител " + employees[1]);
+                System.out.println("Enter the salary for the employee " + employees[1]);
                 int e2 = scan.nextInt();
-                System.out.println("Въведете заплата за служител " + employees[2]);
+                System.out.println("Enter the salary for the employee " + employees[2]);
                 int e3 = scan.nextInt();
-                System.out.println("Въведете заплата за служител " + employees[3]);
+                System.out.println("Enter the salary for the employee " + employees[3]);
                 int e4 = scan.nextInt();
                 System.out.println("\n");
                 totalSalary = e1 + e2 + e3 + e4;
@@ -55,18 +55,18 @@ public class Bonuses {
                 break;
             }
         }catch(Exception e) {
-            System.out.println("Моля, въведете само цели цифри! \n");
+            System.out.println("Please, enter a number! \n");
         }
 
         try {
             for (String d : employees) {
-                System.out.println("Въведете брой работни дни за служител " + employees[0]);
+                System.out.println("Enter the work days for the employee " + employees[0]);
                 int d1 = scan.nextInt();
-                System.out.println("Въведете брой работни дни за служител " + employees[1]);
+                System.out.println("Enter the work days for the employee " + employees[1]);
                 int d2 = scan.nextInt();
-                System.out.println("Въведете брой работни дни за служител " + employees[2]);
+                System.out.println("Enter the work days for the employee " + employees[2]);
                 int d3 = scan.nextInt();
-                System.out.println("Въведете брой работни дни за служител " + employees[3]);
+                System.out.println("Enter the work days for the employee " + employees[3]);
                 int d4 = scan.nextInt();
                 System.out.println("\n");
                 workDays = d1 + d2 + d3 + d4;
@@ -74,21 +74,21 @@ public class Bonuses {
                 break;
             }
         }catch(Exception e) {
-            System.out.println("Моля, въведете само цели цифри! \n");
+            System.out.println("Please, enter a number! \n");
         }
 
         try {
-            System.out.println("Моля, въведете процента на Бонуса като цяла цифра!");
+            System.out.println("Please, enter the bonus: ");
             int bonus = scan.nextInt();
             System.out.println("------------------");
             bonusPercent = bonus;
         }catch (Exception e) {
-            System.out.println("Моля, въведете само цели цифри! \n");
+            System.out.println("Please, enter a number! \n");
         }
         
-        System.out.println("Общата сума на всички заплати е: " + totalSalary + "лв");
-        System.out.println("Въведеният процент на бонус е: " + bonusPercent + "%");
-        System.out.println("Общият брой работни дни е: " + workDays + " дни \n");
+        System.out.println("The total amount of all salaries is: " + totalSalary + "lv");
+        System.out.println("The bonus percentage is: " + bonusPercent + "%");
+        System.out.println("The total number of work days is: " + workDays + " days \n");
 
         double bonusDays1 = b1 / workDays;
         double bonusDays2 = b2 / workDays;
@@ -112,10 +112,10 @@ public class Bonuses {
         int finalBonus3 = (int) (employee3 + extraBonus3);
         int finalBonus4 = (int) (employee4 + extraBonus4);
 
-        System.out.println("Бонуса на " + employees[0] + " e " + finalBonus1 + "лв");
-        System.out.println("Бонуса на " + employees[1] + " e " + finalBonus2 + "лв");
-        System.out.println("Бонуса на " + employees[2] + " e " + finalBonus3 + "лв");
-        System.out.println("Бонуса на " + employees[3] + " e " + finalBonus4 + "лв \n");
-        System.out.println("Данните са генерирани на: " + formatter.format(date));
+        System.out.println("The bonus of " + employees[0] + " is " + finalBonus1 + "lv");
+        System.out.println("The bonus of " + employees[1] + " e " + finalBonus2 + "lv");
+        System.out.println("The bonus of " + employees[2] + " e " + finalBonus3 + "lv");
+        System.out.println("The bonus of " + employees[3] + " e " + finalBonus4 + "lv \n");
+        System.out.println("The report is generated on: " + formatter.format(date));
     }
 }
