@@ -30,14 +30,14 @@ public class Bonuses {
         int bonusPercent = 0;
         int workDays = 0;
         int monthWorkDays = 21;
-        double a1 = 0;
-        double a2 = 0;
-        double a3 = 0;
-        double a4 = 0;
-        double b1 = 0;
-        double b2 = 0;
-        double b3 = 0;
-        double b4 = 0;
+        double salaryInput1 = 0;
+        double salaryInput2 = 0;
+        double salaryInput3 = 0;
+        double salaryInput4 = 0;
+        double workDaysInput1 = 0;
+        double workDaysInput2 = 0;
+        double workDaysInput3 = 0;
+        double workDaysInput4 = 0;
 
         try {
             for (String s : employees) {
@@ -51,7 +51,7 @@ public class Bonuses {
                 int e4 = scan.nextInt();
                 System.out.println("\n");
                 totalSalary = e1 + e2 + e3 + e4;
-                a1 = e1; a2 = e2; a3 = e3; a4 = e4;
+                salaryInput1 = e1; salaryInput2 = e2; salaryInput3 = e3; salaryInput4 = e4;
                 break;
             }
         }catch(Exception e) {
@@ -70,7 +70,7 @@ public class Bonuses {
                 int d4 = scan.nextInt();
                 System.out.println("\n");
                 workDays = d1 + d2 + d3 + d4;
-                b1 = d1; b2 = d2; b3 = d3; b4 = d4;
+                workDaysInput1 = d1; workDaysInput2 = d2; workDaysInput3 = d3; workDaysInput4 = d4;
                 break;
             }
         }catch(Exception e) {
@@ -90,15 +90,15 @@ public class Bonuses {
         System.out.println("The bonus percentage is: " + bonusPercent + "%");
         System.out.println("The total number of work days is: " + workDays + " days \n");
 
-        double bonusDays1 = b1 / workDays;
-        double bonusDays2 = b2 / workDays;
-        double bonusDays3 = b3 / workDays;
-        double bonusDays4 = b4 / workDays;
+        double bonusDays1 = workDaysInput1 / workDays;
+        double bonusDays2 = workDaysInput2 / workDays;
+        double bonusDays3 = workDaysInput3 / workDays;
+        double bonusDays4 = workDaysInput4 / workDays;
 
-        double employee1 = (a1 * bonusPercent) / 100 / (monthWorkDays / b1);
-        double employee2 = (a2 * bonusPercent) / 100 / (monthWorkDays / b2);
-        double employee3 = (a3 * bonusPercent) / 100 / (monthWorkDays / b3);
-        double employee4 = (a4 * bonusPercent) / 100 / (monthWorkDays / b4);
+        double employee1 = (salaryInput1 * bonusPercent) / 100 / (monthWorkDays / workDaysInput1);
+        double employee2 = (salaryInput2 * bonusPercent) / 100 / (monthWorkDays / workDaysInput2);
+        double employee3 = (salaryInput3 * bonusPercent) / 100 / (monthWorkDays / workDaysInput3);
+        double employee4 = (salaryInput4 * bonusPercent) / 100 / (monthWorkDays / workDaysInput4);
 
         double totalEmployeeBonus = employee1 + employee2 + employee3 + employee4;
         double difference = ((totalSalary * bonusPercent) / 100) - (totalEmployeeBonus);
