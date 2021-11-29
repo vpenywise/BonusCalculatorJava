@@ -14,9 +14,10 @@ public class Bonuses2 {
         int totalSalary = 0;
         int workDays = 0;
         int workDaysMonth = 21;
+        double bonusWorkDays;
         Scanner scan = new Scanner(System.in);
 
-        for(Employee employee : employees){
+        for (Employee employee : employees) {
             System.out.println("Enter the salary for the employee " + employee.getName());
             employee.setSalary(scan.nextInt());
             totalSalary += employee.getSalary();
@@ -26,44 +27,32 @@ public class Bonuses2 {
             workDays += employee.getWorkDaysInput();
         }
 
-        for(Employee employee : employees) {
-            double bonusDays = employee.getBonusDays(workDays);
-            System.out.println(bonusDays);
+        System.out.println("Please, enter the bonus percentage: ");
+        bonusWorkDays = scan.nextInt();
 
-            System.out.println("Enter bonus percent: ");
-            employee.setBonusPercent(scan.nextInt());
-            employee.bonusPercent += employee.getBonusPercent(scan.nextInt());
-            break;
+        //е от тука надолу си ебало майката
+        for(Employee employee : employees) {
+            Employee.getBonusDays(workDays, workDaysMonth);
+            bonusWorkDays = employee.getBonusDays(workDays, workDaysMonth);
+            System.out.println(bonusWorkDays);
         }
+        
     }
 
     private static class Employee {
         String name;
         int salary;
         double workDaysInput;
-        int bonusPercent;
 
-        public void setBonusPercent(int bonusPercent) {
-            this.bonusPercent = bonusPercent;
-        }
-
-        int getBonusPercent(int bonusPercent) {
-            return this.bonusPercent = bonusPercent;
-        }
-
-        double getBonusDays(double workDays) {
-            return this.workDaysInput / workDays;
+        static double getBonusDays(double workDaysInput, int workDays) {
+            return (workDaysInput / workDays);
         }
 
         double baseBonus(double baseBonus) {
             return this.workDaysInput / baseBonus;
         }
 
-        public Employee() {
-
-        }
-
-        public void setWorkDaysInput(double workDaysInput) {
+        void setWorkDaysInput(double workDaysInput) {
             this.workDaysInput = workDaysInput;
         }
 
@@ -75,9 +64,6 @@ public class Bonuses2 {
             this.name = name;
         }
 
-        public void setName(String name) {
-            this.name = name;
-        }
         public String getName() {
             return name;
         }
@@ -85,9 +71,11 @@ public class Bonuses2 {
         public void setSalary(int salary) {
             this.salary = salary;
         }
+
         public int getSalary() {
             return salary;
         }
 
     }
 }
+
