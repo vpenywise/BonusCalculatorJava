@@ -28,17 +28,35 @@ public class Bonuses2 {
 
         for(Employee employee : employees) {
             double bonusDays = employee.getBonusDays(workDays);
-//            System.out.println(bonusDays);
+            System.out.println(bonusDays);
+
+            System.out.println("Enter bonus percent: ");
+            employee.setBonusPercent(scan.nextInt());
+            employee.bonusPercent += employee.getBonusPercent(scan.nextInt());
+            break;
         }
     }
 
-    public static class Employee {
+    private static class Employee {
         String name;
         int salary;
         double workDaysInput;
+        int bonusPercent;
 
-        double getBonusDays(double workingDays) {
-            return this.workDaysInput / workingDays;
+        public void setBonusPercent(int bonusPercent) {
+            this.bonusPercent = bonusPercent;
+        }
+
+        int getBonusPercent(int bonusPercent) {
+            return this.bonusPercent = bonusPercent;
+        }
+
+        double getBonusDays(double workDays) {
+            return this.workDaysInput / workDays;
+        }
+
+        double baseBonus(double baseBonus) {
+            return this.workDaysInput / baseBonus;
         }
 
         public Employee() {
