@@ -32,11 +32,11 @@ public class Bonuses2 {
 
         //е от тука надолу си ебало майката
         for(Employee employee : employees) {
-            Employee.getBonusDays(workDays, workDaysMonth);
+            employee.getBonusDays(workDays, workDaysMonth);
             bonusWorkDays = employee.getBonusDays(workDays, workDaysMonth);
             System.out.println(bonusWorkDays);
         }
-        
+
     }
 
     private static class Employee {
