@@ -12,9 +12,10 @@ public class Bonuses2 {
         };
 
         int totalSalary = 0;
-        int workDays = 0;
+        int totalSumWorkDays = 0;
         int workDaysMonth = 21;
         double bonusWorkDays;
+        int[] daysEntered = new int[employees.length];
         Scanner scan = new Scanner(System.in);
 
         for (Employee employee : employees) {
@@ -24,16 +25,24 @@ public class Bonuses2 {
 
             System.out.println("Enter the work days for the employee " + employee.getName());
             employee.setWorkDaysInput(scan.nextInt());
-            workDays += employee.getWorkDaysInput();
+            totalSumWorkDays += employee.getWorkDaysInput();
         }
 
         System.out.println("Please, enter the bonus percentage: ");
         bonusWorkDays = scan.nextInt();
 
+        for(int i = 0; i < daysEntered.length; i++) {
+            daysEntered[i] = scan.nextInt();
+            System.out.println(daysEntered[0]);
+            System.out.println(daysEntered[1]);
+            System.out.println(daysEntered[2]);
+            System.out.println(daysEntered[3]);
+        }
+
         //е от тука надолу си ебало майката
         for(Employee employee : employees) {
-            employee.getBonusDays(workDays, workDaysMonth);
-            bonusWorkDays = employee.getBonusDays(workDays, workDaysMonth);
+            employee.getBonusDays(totalSumWorkDays, workDaysMonth);
+            bonusWorkDays = employee.getBonusDays(totalSumWorkDays, workDaysMonth);
             System.out.println(bonusWorkDays);
         }
 
