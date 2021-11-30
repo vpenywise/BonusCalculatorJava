@@ -53,6 +53,12 @@ public class Bonuses2 {
         int salary;
         double workDaysInput;
 
+        public Employee() {  }
+
+        public Employee(String name) {
+            this.name = name;
+        }
+
         static double getBonusDays(double workDaysInput, int workDays) {
             return (workDaysInput / workDays);
         }
@@ -67,10 +73,6 @@ public class Bonuses2 {
 
         public double getWorkDaysInput() {
             return workDaysInput;
-        }
-
-        public Employee(String name) {
-            this.name = name;
         }
 
         public String getName() {
