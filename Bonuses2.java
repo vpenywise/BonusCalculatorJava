@@ -12,6 +12,18 @@ public class Bonuses2 {
                 new Employee("EP")
         };
 
+        String[] employeeList = new String[employees.length];
+        for (int i=0;i<employeeList.length;i++) {
+            employeeList[i] = employees[i].toString();
+        }
+        employeeList.toString();
+        System.out.println(employeeList);
+
+
+//        String[] employeeList = Arrays.asList(employees).toArray(new String[0]);
+//        System.out.println(Arrays.toString(employeeList));
+//        System.arraycopy(employees, 0, employeeList, 0,employeeList.length);
+
         int totalSalary = 0;
         int totalSumWorkDays = 0;
         int workDaysMonth = 21;
