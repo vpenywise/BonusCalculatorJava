@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 
 public class Bonuses2 {
@@ -15,7 +16,6 @@ public class Bonuses2 {
         int totalSumWorkDays = 0;
         int workDaysMonth = 21;
         double bonusWorkDays;
-        int[] daysEntered = new int[employees.length];
         Scanner scan = new Scanner(System.in);
 
         for (Employee employee : employees) {
@@ -31,15 +31,14 @@ public class Bonuses2 {
         System.out.println("Please, enter the bonus percentage: ");
         bonusWorkDays = scan.nextInt();
 
-        for(int i = 0; i < daysEntered.length; i++) {
-            daysEntered[i] = scan.nextInt();
-            System.out.println(daysEntered[0]);
-            System.out.println(daysEntered[1]);
-            System.out.println(daysEntered[2]);
-            System.out.println(daysEntered[3]);
-        }
+//        for(int i = 0; i < daysEntered.length; i++) {
+//            daysEntered[i] = scan.nextInt();
+//            System.out.println(daysEntered[0]);
+//            System.out.println(daysEntered[1]);
+//            System.out.println(daysEntered[2]);
+//            System.out.println(daysEntered[3]);
+//        }
 
-        //е от тука надолу си ебало майката
         for(Employee employee : employees) {
             employee.getBonusDays(totalSumWorkDays, workDaysMonth);
             bonusWorkDays = employee.getBonusDays(totalSumWorkDays, workDaysMonth);
