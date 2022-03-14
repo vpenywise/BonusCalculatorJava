@@ -58,32 +58,49 @@ public class Bonuses {
         System.out.println("The bonus percentage is: " + bonus + "%");
         System.out.println("The total number of work days is: " + totalWorkDays + " days \n");
 
-        double bonusDays1 = workDaysInput1 / totalWorkDays;
-        double bonusDays2 = workDaysInput2 / totalWorkDays;
-        double bonusDays3 = workDaysInput3 / totalWorkDays;
-        double bonusDays4 = workDaysInput4 / totalWorkDays;
+        double bonusDays1 = getBonusDays1(workDaysInput1, totalWorkDays);
+        double bonusDays2 = getBonusDays1(workDaysInput2, totalWorkDays);
+        double bonusDays3 = getBonusDays1(workDaysInput3, totalWorkDays);
+        double bonusDays4 = getBonusDays1(workDaysInput4, totalWorkDays);
 
-        double employee1 = (e1.getSalary() * bonus) / 100 / (monthWorkDays / workDaysInput1);
-        double employee2 = (e2.getSalary() * bonus) / 100 / (monthWorkDays / workDaysInput2);
-        double employee3 = (e3.getSalary() * bonus) / 100 / (monthWorkDays / workDaysInput3);
-        double employee4 = (e4.getSalary() * bonus) / 100 / (monthWorkDays / workDaysInput4);
+        double employee1BaseBonus = getEmployee1BaseBonus(e1, bonus, monthWorkDays, workDaysInput1);
+        double employee2BaseBonus = getEmployee1BaseBonus(e2, bonus, monthWorkDays, workDaysInput2);
+        double employee3BaseBonus = getEmployee1BaseBonus(e3, bonus, monthWorkDays, workDaysInput3);
+        double employee4BaseBonus = getEmployee1BaseBonus(e4, bonus, monthWorkDays, workDaysInput4);
 
-        double totalEmployeeBonus = employee1 + employee2 + employee3 + employee4;
-        double difference = ((totalSalary * bonus) / 100) - (totalEmployeeBonus);
-        double extraBonus1 = (difference * bonusDays1);
-        double extraBonus2 = (difference * bonusDays2);
-        double extraBonus3 = (difference * bonusDays3);
-        double extraBonus4 = (difference * bonusDays4);
+        double totalEmployeeBonus = employee1BaseBonus + employee2BaseBonus + employee3BaseBonus + employee4BaseBonus;
+        double difference = getBonusDays1(getExtraBonus1(totalSalary * bonus), 100) - getExtraBonus1(totalEmployeeBonus);
 
-        int finalBonus1 = (int) (employee1 + extraBonus1);
-        int finalBonus2 = (int) (employee2 + extraBonus2);
-        int finalBonus3 = (int) (employee3 + extraBonus3);
-        int finalBonus4 = (int) (employee4 + extraBonus4);
+        double extraBonus1 = getExtraBonus1(difference * bonusDays1);
+        double extraBonus2 = getExtraBonus1(difference * bonusDays2);
+        double extraBonus3 = getExtraBonus1(difference * bonusDays3);
+        double extraBonus4 = getExtraBonus1(difference * bonusDays4);
+
+        int finalBonus1 = getFinalBonus1(employee1BaseBonus, extraBonus1);
+        int finalBonus2 = getFinalBonus1(employee2BaseBonus, extraBonus2);
+        int finalBonus3 = getFinalBonus1(employee3BaseBonus, extraBonus3);
+        int finalBonus4 = getFinalBonus1(employee4BaseBonus, extraBonus4);
 
         System.out.println("The bonus of " + e1.getName() + " is " + finalBonus1 + "lv");
-        System.out.println("The bonus of " + e2.getName() + " e " + finalBonus2 + "lv");
-        System.out.println("The bonus of " + e3.getName() + " e " + finalBonus3 + "lv");
-        System.out.println("The bonus of " + e4.getName() + " e " + finalBonus4 + "lv \n");
+        System.out.println("The bonus of " + e2.getName() + " is " + finalBonus2 + "lv");
+        System.out.println("The bonus of " + e3.getName() + " is " + finalBonus3 + "lv");
+        System.out.println("The bonus of " + e4.getName() + " is " + finalBonus4 + "lv \n");
         System.out.println("The report is generated on: " + formatter.format(date));
+    }
+
+    private static int getFinalBonus1(double employee1BaseBonus, double extraBonus1) {
+        return (int) getExtraBonus1(employee1BaseBonus + extraBonus1);
+    }
+
+    private static double getExtraBonus1(double difference) {
+        return difference;
+    }
+
+    private static double getBonusDays1(double workDaysInput1, int totalWorkDays) {
+        return workDaysInput1 / totalWorkDays;
+    }
+
+    private static double getEmployee1BaseBonus(Employee e1, int bonus, int monthWorkDays, double workDaysInput1) {
+        return getExtraBonus1(e1.getSalary() * bonus) / 100 / getExtraBonus1(monthWorkDays / workDaysInput1);
     }
 }
