@@ -14,7 +14,7 @@ import java.util.Scanner;
 
 public class Bonuses {
 
-    private static int monthWorkDays = 21;
+    private static final int monthWorkDays = 21;
     private static int bonus;
     private static int totalWorkDays;
     private static int totalSalary;
@@ -57,10 +57,10 @@ public class Bonuses {
         double bonusDays3 = getBonusDays(workDaysInput3, totalWorkDays);
         double bonusDays4 = getBonusDays(workDaysInput4, totalWorkDays);
 
-        double employee1BaseBonus = getEmployee1BaseBonus(e1, bonus, monthWorkDays, workDaysInput1);
-        double employee2BaseBonus = getEmployee1BaseBonus(e2, bonus, monthWorkDays, workDaysInput2);
-        double employee3BaseBonus = getEmployee1BaseBonus(e3, bonus, monthWorkDays, workDaysInput3);
-        double employee4BaseBonus = getEmployee1BaseBonus(e4, bonus, monthWorkDays, workDaysInput4);
+        double employee1BaseBonus = getEmployee1BaseBonus(e1, bonus, workDaysInput1);
+        double employee2BaseBonus = getEmployee1BaseBonus(e2, bonus, workDaysInput2);
+        double employee3BaseBonus = getEmployee1BaseBonus(e3, bonus, workDaysInput3);
+        double employee4BaseBonus = getEmployee1BaseBonus(e4, bonus, workDaysInput4);
 
         double totalEmployeeBonus = employee1BaseBonus + employee2BaseBonus + employee3BaseBonus + employee4BaseBonus;
         double difference = getBonusDays(getExtraBonus(totalSalary * bonus), 100) - getExtraBonus(totalEmployeeBonus);
@@ -94,7 +94,7 @@ public class Bonuses {
         return workDaysInput1 / totalWorkDays;
     }
 
-    private static double getEmployee1BaseBonus(Employee e1, int bonus, int monthWorkDays, double workDaysInput1) {
-        return getExtraBonus(e1.getSalary() * bonus) / 100 / getExtraBonus(monthWorkDays / workDaysInput1);
+    private static double getEmployee1BaseBonus(Employee e1, int bonus, double workDaysInput1) {
+        return getExtraBonus(e1.getSalary() * bonus) / 100 / getExtraBonus(Bonuses.monthWorkDays / workDaysInput1);
     }
 }
