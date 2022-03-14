@@ -17,6 +17,7 @@ public class Bonuses {
     private static int monthWorkDays = 21;
     private static int bonus;
     private static int totalWorkDays;
+    private static int totalSalary;
 
     public static void main(String[] args) {
 
@@ -28,8 +29,6 @@ public class Bonuses {
         Employee e3 = new Employee("VV", 890);
         Employee e4 = new Employee("EP", 750);
 
-        int totalSalary;
-        
         totalSalary = e1.getSalary() + e2.getSalary() + e3.getSalary() + e4.getSalary();
 
         Scanner scanner = new Scanner(System.in);
