@@ -14,6 +14,9 @@ import java.util.Scanner;
 
 public class Bonuses {
 
+    private static int monthWorkDays;
+    private static int bonus;
+
     public static void main(String[] args) {
 
         Date date = new Date();
@@ -26,32 +29,24 @@ public class Bonuses {
 
         int totalSalary;
         int totalWorkDays;
-        int monthWorkDays = 21;
-        double workDaysInput1;
-        double workDaysInput2;
-        double workDaysInput3;
-        double workDaysInput4;
+        monthWorkDays = 21;
 
         totalSalary = e1.getSalary() + e2.getSalary() + e3.getSalary() + e4.getSalary();
 
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Enter the work days for the employee " + e1.getName());
-        int d1 = scanner.nextInt();
+        int workDaysInput1 = scanner.nextInt();
         System.out.println("Enter the work days for the employee " + e1.getName());
-        int d2 = scanner.nextInt();
+        int workDaysInput2 = scanner.nextInt();
         System.out.println("Enter the work days for the employee " + e3.getName());
-        int d3 = scanner.nextInt();
+        int workDaysInput3 = scanner.nextInt();
         System.out.println("Enter the work days for the employee " + e4.getName());
-        int d4 = scanner.nextInt();
-        totalWorkDays = d1 + d2 + d3 + d4;
-        workDaysInput1 = d1;
-        workDaysInput2 = d2;
-        workDaysInput3 = d3;
-        workDaysInput4 = d4;
+        int workDaysInput4 = scanner.nextInt();
+        totalWorkDays = workDaysInput1 + workDaysInput2 + workDaysInput3 + workDaysInput4;
 
         System.out.println("Please, enter the bonus: ");
-        int bonus = scanner.nextInt();
+        bonus = scanner.nextInt();
         System.out.println("------------------");
 
         System.out.println("The total amount of all salaries is: " + totalSalary + "lv");
