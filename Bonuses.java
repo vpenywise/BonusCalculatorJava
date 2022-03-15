@@ -8,114 +8,144 @@
             -----> double variable 23 / 21 = 1.0952380952380953; // which is than casted into an (int);
  */
 
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Scanner;
+import java.util.*;
 
 public class Bonuses {
+
+    private static final int monthWorkDays = 21;
+    private static int bonus;
+    private static int totalWorkDays;
+    private static int totalSalary;
+    private static double difference;
+    private static double totalEmployeeBonus;
 
     public static void main(String[] args) {
 
         Date date = new Date();
-        Timestamp time = new Timestamp(date.getTime());
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
-        Scanner scan = new Scanner(System.in);
+        Employee e1 = new Employee("AA", 770);
+        Employee e2 = new Employee("VBI", 660);
+        Employee e3 = new Employee("VV", 890);
+        Employee e4 = new Employee("EP", 750);
 
-        String[] employees = {"AA", "VBI", "VV", "EP"};
-        System.out.println("Please, enter the salary: \n");
+        List<Employee> employeeList = Arrays.asList(e1, e2, e3, e4);
 
-        int totalSalary = 0;
-        int bonusPercent = 0;
-        int workDays = 0;
-        int monthWorkDays = 21;
-        double salaryInput1 = 0;
-        double salaryInput2 = 0;
-        double salaryInput3 = 0;
-        double salaryInput4 = 0;
-        double workDaysInput1 = 0;
-        double workDaysInput2 = 0;
-        double workDaysInput3 = 0;
-        double workDaysInput4 = 0;
+        totalSalary = totalSalary(employeeList);
 
-        try {
-            for (String s : employees) {
-                System.out.println("Enter the salary for the employee " + employees[0]);
-                int e1 = scan.nextInt();
-                System.out.println("Enter the salary for the employee " + employees[1]);
-                int e2 = scan.nextInt();
-                System.out.println("Enter the salary for the employee " + employees[2]);
-                int e3 = scan.nextInt();
-                System.out.println("Enter the salary for the employee " + employees[3]);
-                int e4 = scan.nextInt();
-                System.out.println("\n");
-                totalSalary = e1 + e2 + e3 + e4;
-                salaryInput1 = e1; salaryInput2 = e2; salaryInput3 = e3; salaryInput4 = e4;
-                break;
-            }
-        }catch(Exception e) {
-            System.out.println("Please, enter a number! \n");
-        }
+        Scanner scanner = new Scanner(System.in);
 
-        try {
-            for (String d : employees) {
-                System.out.println("Enter the work days for the employee " + employees[0]);
-                int d1 = scan.nextInt();
-                System.out.println("Enter the work days for the employee " + employees[1]);
-                int d2 = scan.nextInt();
-                System.out.println("Enter the work days for the employee " + employees[2]);
-                int d3 = scan.nextInt();
-                System.out.println("Enter the work days for the employee " + employees[3]);
-                int d4 = scan.nextInt();
-                System.out.println("\n");
-                workDays = d1 + d2 + d3 + d4;
-                workDaysInput1 = d1; workDaysInput2 = d2; workDaysInput3 = d3; workDaysInput4 = d4;
-                break;
-            }
-        }catch(Exception e) {
-            System.out.println("Please, enter a number! \n");
-        }
+        intputWorkDays (scanner, employeeList);
 
-        try {
-            System.out.println("Please, enter the bonus: ");
-            int bonus = scan.nextInt();
-            System.out.println("------------------");
-            bonusPercent = bonus;
-        }catch (Exception e) {
-            System.out.println("Please, enter a number! \n");
-        }
-        
+        totalWorkDays = getTotalWorkingDays(employeeList);
+
+        System.out.println("Please, enter the bonus percent: ");
+        bonus = scanner.nextInt();
+        System.out.println("------------------");
+
         System.out.println("The total amount of all salaries is: " + totalSalary + "lv");
-        System.out.println("The bonus percentage is: " + bonusPercent + "%");
-        System.out.println("The total number of work days is: " + workDays + " days \n");
+        System.out.println("The bonus percentage is: " + bonus + "%");
+        System.out.println("The total number of work days is: " + totalWorkDays + " days \n");
 
-        double bonusDays1 = workDaysInput1 / workDays;
-        double bonusDays2 = workDaysInput2 / workDays;
-        double bonusDays3 = workDaysInput3 / workDays;
-        double bonusDays4 = workDaysInput4 / workDays;
+        calculateBonusDays(totalWorkDays, employeeList);
 
-        double employee1 = (salaryInput1 * bonusPercent) / 100 / (monthWorkDays / workDaysInput1);
-        double employee2 = (salaryInput2 * bonusPercent) / 100 / (monthWorkDays / workDaysInput2);
-        double employee3 = (salaryInput3 * bonusPercent) / 100 / (monthWorkDays / workDaysInput3);
-        double employee4 = (salaryInput4 * bonusPercent) / 100 / (monthWorkDays / workDaysInput4);
+        calculateBaseBonus(employeeList);
 
-        double totalEmployeeBonus = employee1 + employee2 + employee3 + employee4;
-        double difference = ((totalSalary * bonusPercent) / 100) - (totalEmployeeBonus);
-        double extraBonus1 = (difference * bonusDays1);
-        double extraBonus2 = (difference * bonusDays2);
-        double extraBonus3 = (difference * bonusDays3);
-        double extraBonus4 = (difference * bonusDays4);
+        totalEmployeeBonus = calculateTotalEmployeeBonus(employeeList);
 
-        int finalBonus1 = (int) (employee1 + extraBonus1);
-        int finalBonus2 = (int) (employee2 + extraBonus2);
-        int finalBonus3 = (int) (employee3 + extraBonus3);
-        int finalBonus4 = (int) (employee4 + extraBonus4);
+        difference = calculateBonusDays(getExtraBonus(totalSalary * bonus), 100) - getExtraBonus(totalEmployeeBonus);
 
-        System.out.println("The bonus of " + employees[0] + " is " + finalBonus1 + "lv");
-        System.out.println("The bonus of " + employees[1] + " e " + finalBonus2 + "lv");
-        System.out.println("The bonus of " + employees[2] + " e " + finalBonus3 + "lv");
-        System.out.println("The bonus of " + employees[3] + " e " + finalBonus4 + "lv \n");
+        calculateExtraBonus(employeeList);
+
+        calculateFinalBonus(employeeList);
+
+        printFinalBonus(employeeList);
+
         System.out.println("The report is generated on: " + formatter.format(date));
     }
+
+    private static void printFinalBonus(List<Employee> employeeList) {
+        for (Employee employee : employeeList) {
+            System.out.println("The bonus of " + employee.getName() + " is " + employee.getFinalBonus() + "lv");
+        }
+    }
+
+    private static void calculateFinalBonus(List<Employee> employeeList) {
+        for (Employee employee : employeeList) {
+            employee.setFinalBonus(getFinalBonus(employee.getBaseBonus(), employee.getExtraBonus()));
+        }
+    }
+
+    private static void calculateExtraBonus(List<Employee> employeeList) {
+        for (Employee employee : employeeList) {
+            employee.setExtraBonus((int) getExtraBonus(employee.getBonusDays()));
+        }
+    }
+
+    private static double calculateTotalEmployeeBonus(List<Employee> employeeList) {
+        double totalBonus = 0;
+        for (Employee employee : employeeList) {
+            totalBonus += employee.getBaseBonus();
+        }
+        return totalBonus;
+    }
+
+    private static void calculateBaseBonus(List<Employee> employeeList) {
+        for (Employee employee : employeeList) {
+            employee.setBaseBonus((int) getEmployeeBaseBonus(employee, bonus, employee.getWorkDays()));
+        }
+    }
+
+    private static void calculateBonusDays(int totalWorkDays, List<Employee> employeeList) {
+        for (Employee employee : employeeList) {
+            employee.setBonusDays((int) calculateBonusDays(employee.getWorkDays(), totalWorkDays));
+        }
+    }
+
+    private static int getTotalWorkingDays(List<Employee> employeeList) {
+        int totalWorkDays = 0;
+        for (Employee employee : employeeList) {
+            totalWorkDays += employee.getWorkDays();
+        }
+        return totalWorkDays;
+    }
+
+    private static void intputWorkDays(Scanner scanner, List<Employee> employeeList) {
+        for (Employee employee : employeeList) {
+            System.out.println("Enter the work days for the employee " + employee.getName());
+            employee.setWorkDays(scanner.nextInt());
+        }
+    }
+
+    private static int getFinalBonus(double employeeBaseBonus, double extraBonus) {
+        return (int) (employeeBaseBonus + extraBonus);
+    }
+
+    private static double getExtraBonus(double bonusDays) {
+        return getDifference() * bonusDays;
+    }
+
+    private static double calculateBonusDays(double workDaysInput, int totalWorkDays) {
+        return workDaysInput / totalWorkDays;
+    }
+
+//    double employee1 = (salaryInput1 * bonusPercent) / 100 / (monthWorkDays / workDaysInput1);
+
+    private static double getEmployeeBaseBonus(Employee e1, int bonus, int workDaysInput1) {
+        return (e1.getSalary() * bonus) / 100 / (Bonuses.monthWorkDays / workDaysInput1);
+    }
+
+    private static double getDifference() {
+        return ((totalSalary * bonus) / 100) - (totalEmployeeBonus);
+    }
+
+    private static int totalSalary(List<Employee> employeeList) {
+        int salary = 0;
+        for (Employee employee : employeeList) {
+            salary += employee.getSalary();
+        }
+        return salary;
+    }
+
 }
