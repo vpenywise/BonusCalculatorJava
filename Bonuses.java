@@ -36,7 +36,7 @@ public class Bonuses {
 
         Scanner scanner = new Scanner(System.in);
 
-        intputWorkDays (scanner, employeeList);
+        inputWorkDays(scanner, employeeList);
 
         totalWorkDays = getTotalWorkingDays(employeeList);
 
@@ -111,7 +111,7 @@ public class Bonuses {
         return totalWorkDays;
     }
 
-    private static void intputWorkDays(Scanner scanner, List<Employee> employeeList) {
+    private static void inputWorkDays(Scanner scanner, List<Employee> employeeList) {
         for (Employee employee : employeeList) {
             System.out.println("Enter the work days for the employee " + employee.getName());
             employee.setWorkDays(scanner.nextInt());
